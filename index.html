@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Free Statistics Calculator – Mean, Median, SD, Z-Score & More</title>
+
+<meta name="description"
+content="Free online statistics calculator for mean, median, mode, variance, standard deviation, quartiles, percentiles, z-scores, confidence intervals, t-tests, correlation, and linear regression.">
+
+<meta name="keywords"
+content="statistics calculator, statistical calculator, mean calculator, median calculator, standard deviation calculator, z score calculator, variance calculator">
+
+<meta name="robots" content="index, follow">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Statistics Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="about-calculator">
+
+    <h2>Free Statistics Calculator</h2>
+
+    <p>
+        Calculate descriptive statistics including mean, median, mode,
+        range, variance, standard deviation, coefficient of variation,
+        standard error, quartiles, percentiles, and z-scores.
+    </p>
+
+    <p>
+        This online statistics calculator also includes confidence
+        intervals, one-sample and two-sample t-tests, chi-square tests,
+        correlation, and linear regression.
+    </p>
+
+    <p>
+        Enter your data to quickly calculate statistical results and
+        visualize your data using charts. This tool is designed for
+        students, researchers, teachers, and anyone working with
+        statistical data.
+    </p>
+
+</section>
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">Σ</div>
+
+            <div>
+                <h1>Statistics Calculator</h1>
+                <p>Calculate descriptive statistics quickly and easily.</p>
+            </div>
+        </header>
+
+
+        <!-- INPUT CARD -->
+        <section class="card input-card">
+
+            <h2>Enter Your Data</h2>
+
+            <p class="description">
+                Enter numbers separated by commas, spaces, or new lines.
+            </p>
+
+            <textarea
+                id="dataInput"
+                placeholder="Example: 12, 13, 14, 15, 16"
+            ></textarea>
+
+            <div id="errorMessage" class="error-message"></div>
+
+
+            <!-- SAMPLE / POPULATION -->
+            <div class="calculation-type">
+
+                <h3>Calculate variance and standard deviation as:</h3>
+
+                <div class="options">
+
+                    <label class="option">
+                        <input
+                            type="radio"
+                            name="dataType"
+                            value="sample"
+                            checked
+                        >
+                        <span>
+                            <strong>Sample</strong>
+                            <small>Use n − 1</small>
+                        </span>
+                    </label>
+
+                    <label class="option">
+                        <input
+                            type="radio"
+                            name="dataType"
+                            value="population"
+                        >
+                        <span>
+                            <strong>Population</strong>
+                            <small>Use N</small>
+                        </span>
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+            <div class="button-group">
+
+                <button id="calculateBtn" class="primary-btn">
+                    Calculate
+                </button>
+
+                <button id="clearBtn" class="secondary-btn">
+                    Clear
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+        <section id="resultsSection" class="results-section">
+
+            <div class="results-header">
+
+                <div>
+                    <h2>Results</h2>
+                    <p id="sampleSize">n = 0</p>
+                </div>
+
+                <button id="copyBtn" class="copy-btn">
+                    📋 Copy Results
+                </button>
+
+            </div>
+
+
+            <!-- BASIC STATISTICS -->
+            <div class="results-grid">
+
+                <div class="stat-card">
+                    <span class="stat-label">Mean</span>
+                    <strong id="mean">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Median</span>
+                    <strong id="median">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Mode</span>
+                    <strong id="mode">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Minimum</span>
+                    <strong id="minimum">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Maximum</span>
+                    <strong id="maximum">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Range</span>
+                    <strong id="range">—</strong>
+                </div>
+
+            </div>
+
+
+            <!-- DISPERSION -->
+            <h3 class="section-title">Measures of Dispersion</h3>
+
+            <div class="results-grid">
+
+                <div class="stat-card">
+                    <span class="stat-label">Variance</span>
+                    <strong id="variance">—</strong>
+                    <small id="varianceType">Sample</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Standard Deviation</span>
+                    <strong id="standardDeviation">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Coefficient of Variation</span>
+                    <strong id="coefficientVariation">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Standard Error</span>
+                    <strong id="standardError">—</strong>
+                </div>
+
+            </div>
+
+
+            <!-- QUARTILES -->
+            <h3 class="section-title">Quartiles</h3>
+
+            <div class="results-grid">
+
+                <div class="stat-card">
+                    <span class="stat-label">Q1</span>
+                    <strong id="q1">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Q3</span>
+                    <strong id="q3">—</strong>
+                </div>
+
+                <div class="stat-card highlight-card">
+                    <span class="stat-label">IQR</span>
+                    <strong id="iqr">—</strong>
+                </div>
+
+            </div>
+
+<!-- FREQUENCY DISTRIBUTION -->
+<h3 class="section-title">Frequency Distribution</h3>
+
+<div class="table-card">
+
+    <div class="table-wrapper">
+
+        <table id="frequencyTable">
+
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Frequency</th>
+                    <th>Relative Frequency</th>
+                    <th>Cumulative Frequency</th>
+                </tr>
+            </thead>
+
+            <tbody id="frequencyTableBody">
+                <!-- JavaScript will add rows here -->
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- PERCENTILE CALCULATOR -->
+<h3 class="section-title">Percentile Calculator</h3>
+
+<div class="card percentile-card">
+
+    <div class="percentile-input">
+
+        <label for="percentileInput">
+            Enter percentile (0–100)
+        </label>
+
+        <input
+            type="number"
+            id="percentileInput"
+            min="0"
+            max="100"
+            step="0.01"
+            placeholder="Example: 75"
+        >
+
+        <button
+            id="percentileBtn"
+            class="primary-btn"
+        >
+            Calculate Percentile
+        </button>
+
+    </div>
+
+    <div id="percentileResult" class="percentile-result">
+        Enter a percentile to calculate its value.
+    </div>
+
+</div>
+
+<!-- Z-SCORE CALCULATOR -->
+<h3 class="section-title">Z-Score Calculator</h3>
+
+<div class="card zscore-card">
+
+    <label for="zScoreValue">
+        Enter a value (x)
+    </label>
+
+    <div class="zscore-input">
+
+        <input
+            type="number"
+            id="zScoreValue"
+            placeholder="Example: 16"
+            step="any"
+        >
+
+        <button
+            id="zScoreBtn"
+            class="primary-btn"
+        >
+            Calculate Z-Score
+        </button>
+
+    </div>
+
+    <div id="zScoreResult" class="percentile-result">
+        Enter a value to calculate its z-score.
+    </div>
+
+</div>
+
+<!-- CONFIDENCE INTERVAL -->
+<h3 class="section-title">Confidence Interval for the Mean</h3>
+
+<div class="card confidence-card">
+
+    <div class="confidence-input">
+
+        <label for="confidenceLevel">
+            Confidence Level
+        </label>
+
+        <select id="confidenceLevel">
+
+            <option value="0.90">90%</option>
+            <option value="0.95" selected>95%</option>
+            <option value="0.99">99%</option>
+
+        </select>
+
+        <button
+            id="confidenceBtn"
+            class="primary-btn"
+        >
+            Calculate Confidence Interval
+        </button>
+
+    </div>
+
+
+    <div class="confidence-results">
+
+        <div>
+            <span>Sample Mean</span>
+            <strong id="ciMean">—</strong>
+        </div>
+
+        <div>
+            <span>Sample SD</span>
+            <strong id="ciSD">—</strong>
+        </div>
+
+        <div>
+            <span>Sample Size</span>
+            <strong id="ciN">—</strong>
+        </div>
+
+        <div>
+            <span>Standard Error</span>
+            <strong id="ciSE">—</strong>
+        </div>
+
+        <div>
+            <span>Critical Value</span>
+            <strong id="ciCritical">—</strong>
+        </div>
+
+        <div>
+            <span>Margin of Error</span>
+            <strong id="ciMargin">—</strong>
+        </div>
+
+    </div>
+
+
+    <div class="ci-interval">
+
+        <div>
+            <span>Lower Bound</span>
+            <strong id="ciLower">—</strong>
+        </div>
+
+        <div>
+            <span>Upper Bound</span>
+            <strong id="ciUpper">—</strong>
+        </div>
+
+    </div>
+
+
+    <div
+        id="confidenceInterpretation"
+        class="confidence-interpretation"
+    >
+        Enter data and calculate a confidence interval.
+    </div>
+
+</div>
+
+<!-- ONE-SAMPLE T-TEST -->
+<h3 class="section-title">One-Sample t-Test</h3>
+
+<div class="card ttest-card">
+
+    <div class="ttest-input-grid">
+
+        <div>
+            <label for="hypothesizedMean">
+                Hypothesized Mean (μ₀)
+            </label>
+
+            <input
+                type="number"
+                id="hypothesizedMean"
+                placeholder="Example: 15"
+                step="any"
+            >
+        </div>
+
+
+        <div>
+            <label for="alternativeHypothesis">
+                Alternative Hypothesis
+            </label>
+
+            <select id="alternativeHypothesis">
+
+                <option value="two-tailed">
+                    Two-tailed (μ ≠ μ₀)
+                </option>
+
+                <option value="greater">
+                    Greater than (μ > μ₀)
+                </option>
+
+                <option value="less">
+                    Less than (μ < μ₀)
+                </option>
+
+            </select>
+        </div>
+
+
+        <div>
+            <label for="significanceLevel">
+                Significance Level (α)
+            </label>
+
+            <select id="significanceLevel">
+
+                <option value="0.10">
+                    0.10 (10%)
+                </option>
+
+                <option value="0.05" selected>
+                    0.05 (5%)
+                </option>
+
+                <option value="0.01">
+                    0.01 (1%)
+                </option>
+
+            </select>
+        </div>
+
+    </div>
+
+
+    <button
+        id="ttestBtn"
+        class="primary-btn"
+    >
+        Run t-Test
+    </button>
+
+
+    <div class="ttest-results">
+
+        <div>
+            <span>Sample Mean</span>
+            <strong id="ttestMean">—</strong>
+        </div>
+
+        <div>
+            <span>Sample SD</span>
+            <strong id="ttestSD">—</strong>
+        </div>
+
+        <div>
+            <span>Sample Size</span>
+            <strong id="ttestN">—</strong>
+        </div>
+
+        <div>
+            <span>t-statistic</span>
+            <strong id="ttestStatistic">—</strong>
+        </div>
+
+        <div>
+            <span>Degrees of Freedom</span>
+            <strong id="ttestDF">—</strong>
+        </div>
+
+        <div>
+            <span>p-value</span>
+            <strong id="ttestPValue">—</strong>
+        </div>
+
+    </div>
+
+
+    <div
+        id="ttestDecision"
+        class="confidence-interpretation"
+    >
+        Enter a hypothesized mean and run the test.
+    </div>
+
+</div>
+<!-- TWO-SAMPLE T-TEST -->
+<h3 class="section-title">Two-Sample t-Test</h3>
+
+<div class="card ttest-card">
+
+    <div class="two-group-inputs">
+
+        <div class="group-box">
+
+            <h3>Group A</h3>
+
+            <label for="groupAData">
+                Enter Group A data
+            </label>
+
+            <textarea
+                id="groupAData"
+                placeholder="Example: 12, 13, 14, 15, 16"
+            ></textarea>
+
+        </div>
+
+
+        <div class="group-box">
+
+            <h3>Group B</h3>
+
+            <label for="groupBData">
+                Enter Group B data
+            </label>
+
+            <textarea
+                id="groupBData"
+                placeholder="Example: 18, 19, 17, 20, 21"
+            ></textarea>
+
+        </div>
+
+    </div>
+
+
+    <div class="two-test-options">
+
+        <div>
+            <label for="twoSampleAlternative">
+                Alternative Hypothesis
+            </label>
+
+            <select id="twoSampleAlternative">
+
+                <option value="two-tailed">
+                    Two-tailed (μ₁ ≠ μ₂)
+                </option>
+
+                <option value="greater">
+                    Greater (μ₁ > μ₂)
+                </option>
+
+                <option value="less">
+                    Less (μ₁ < μ₂)
+                </option>
+
+            </select>
+        </div>
+
+
+        <div>
+            <label for="twoSampleAlpha">
+                Significance Level (α)
+            </label>
+
+            <select id="twoSampleAlpha">
+
+                <option value="0.10">
+                    0.10 (10%)
+                </option>
+
+                <option value="0.05" selected>
+                    0.05 (5%)
+                </option>
+
+                <option value="0.01">
+                    0.01 (1%)
+                </option>
+
+            </select>
+        </div>
+
+    </div>
+
+
+    <button
+        id="twoSampleTTestBtn"
+        class="primary-btn"
+    >
+        Run Two-Sample t-Test
+    </button>
+
+
+    <div class="ttest-results">
+
+        <div>
+            <span>Mean — Group A</span>
+            <strong id="groupAMean">—</strong>
+        </div>
+
+        <div>
+            <span>Mean — Group B</span>
+            <strong id="groupBMean">—</strong>
+        </div>
+
+        <div>
+            <span>SD — Group A</span>
+            <strong id="groupASD">—</strong>
+        </div>
+
+        <div>
+            <span>SD — Group B</span>
+            <strong id="groupBSD">—</strong>
+        </div>
+
+        <div>
+            <span>t-statistic</span>
+            <strong id="twoSampleTStatistic">—</strong>
+        </div>
+
+        <div>
+            <span>Degrees of Freedom</span>
+            <strong id="twoSampleDF">—</strong>
+        </div>
+
+        <div>
+            <span>p-value</span>
+            <strong id="twoSamplePValue">—</strong>
+        </div>
+
+    </div>
+
+
+    <div
+        id="twoSampleDecision"
+        class="confidence-interpretation"
+    >
+        Enter two groups and run the test.
+    </div>
+
+</div>
+<!-- CHI-SQUARE GOODNESS-OF-FIT -->
+<h3 class="section-title">Chi-Square Goodness-of-Fit Test</h3>
+
+<div class="card chi-square-card">
+
+    <div class="chi-input-grid">
+
+        <div>
+
+            <label for="observedData">
+                Observed Frequencies
+            </label>
+
+            <textarea
+                id="observedData"
+                placeholder="Example: 20, 25, 30, 25"
+            ></textarea>
+
+        </div>
+
+
+        <div>
+
+            <label for="expectedData">
+                Expected Frequencies
+            </label>
+
+            <textarea
+                id="expectedData"
+                placeholder="Example: 25, 25, 25, 25"
+            ></textarea>
+
+        </div>
+
+    </div>
+
+
+    <div class="chi-options">
+
+        <div>
+
+            <label for="chiAlpha">
+                Significance Level (α)
+            </label>
+
+            <select id="chiAlpha">
+
+                <option value="0.10">
+                    0.10 (10%)
+                </option>
+
+                <option value="0.05" selected>
+                    0.05 (5%)
+                </option>
+
+                <option value="0.01">
+                    0.01 (1%)
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="chiSquareBtn"
+        class="primary-btn"
+    >
+        Run Chi-Square Test
+    </button>
+
+
+    <div class="chi-results">
+
+        <div>
+            <span>Chi-Square Statistic</span>
+            <strong id="chiSquareStatistic">—</strong>
+        </div>
+
+        <div>
+            <span>Degrees of Freedom</span>
+            <strong id="chiSquareDF">—</strong>
+        </div>
+
+        <div>
+            <span>p-value</span>
+            <strong id="chiSquarePValue">—</strong>
+        </div>
+
+    </div>
+
+
+    <div
+        id="chiSquareDecision"
+        class="confidence-interpretation"
+    >
+        Enter observed and expected frequencies to run the test.
+    </div>
+
+</div>
+<!-- CORRELATION -->
+<h3 class="section-title">Pearson Correlation</h3>
+
+<div class="card correlation-card">
+
+    <div class="correlation-inputs">
+
+        <div>
+            <label for="xData">
+                X Values
+            </label>
+
+            <textarea
+                id="xData"
+                placeholder="Example: 10, 12, 15, 18, 20"
+            ></textarea>
+        </div>
+
+
+        <div>
+            <label for="yData">
+                Y Values
+            </label>
+
+            <textarea
+                id="yData"
+                placeholder="Example: 20, 25, 30, 38, 41"
+            ></textarea>
+        </div>
+
+    </div>
+
+
+    <button
+        id="correlationBtn"
+        class="primary-btn"
+    >
+        Calculate Correlation
+    </button>
+
+
+    <div class="correlation-results">
+
+        <div>
+            <span>Pearson r</span>
+            <strong id="correlationR">—</strong>
+        </div>
+
+        <div>
+            <span>Sample Size</span>
+            <strong id="correlationN">—</strong>
+        </div>
+
+    </div>
+
+
+    <div
+        id="correlationInterpretation"
+        class="confidence-interpretation"
+    >
+        Enter paired X and Y values to calculate correlation.
+    </div>
+
+</div>
+<!-- LINEAR REGRESSION -->
+<h3 class="section-title">Linear Regression</h3>
+
+<div class="card regression-card">
+
+    <div class="regression-inputs">
+
+        <div>
+            <label for="regressionX">
+                X Values
+            </label>
+
+            <textarea
+                id="regressionX"
+                placeholder="Example: 10, 12, 15, 18, 20"
+            ></textarea>
+        </div>
+
+        <div>
+            <label for="regressionY">
+                Y Values
+            </label>
+
+            <textarea
+                id="regressionY"
+                placeholder="Example: 20, 25, 30, 38, 41"
+            ></textarea>
+        </div>
+
+    </div>
+
+    <button
+        id="regressionBtn"
+        class="primary-btn"
+    >
+        Calculate Regression
+    </button>
+
+    <div class="regression-results">
+
+        <div>
+            <span>Slope (b₁)</span>
+            <strong id="regressionSlope">—</strong>
+        </div>
+
+        <div>
+            <span>Intercept (b₀)</span>
+            <strong id="regressionIntercept">—</strong>
+        </div>
+
+        <div>
+            <span>R²</span>
+            <strong id="regressionR2">—</strong>
+        </div>
+
+    </div>
+
+    <div class="regression-equation">
+
+        <span>Regression Equation</span>
+
+        <strong id="regressionEquation">
+            ŷ = —
+        </strong>
+
+    </div>
+
+    <div
+        id="regressionInterpretation"
+        class="confidence-interpretation"
+    >
+        Enter X and Y values to calculate the regression equation.
+    </div>
+
+</div>
+<div
+    id="regressionInterpretation"
+    class="confidence-interpretation"
+>
+    Enter X and Y values to calculate the regression equation.
+</div>
+<div class="regression-chart-card">
+
+    <h3>Regression Plot</h3>
+
+    <p>
+        Observed data points and fitted regression line.
+    </p>
+
+    <canvas id="regressionChart"></canvas>
+
+</div>
+
+            <!-- CHART -->
+            <h3 class="section-title">Data Visualization</h3>
+
+            <div class="chart-card">
+
+                <div class="chart-header">
+                    <div>
+                        <h3>Data Distribution</h3>
+                        <p>Your values plotted from smallest to largest.</p>
+                    </div>
+                </div>
+
+                <canvas id="dataChart"></canvas>
+<div class="chart-container">
+    <h3>Box Plot</h3>
+    <canvas id="boxPlotChart"></canvas>
+</div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>Statistics Calculator • Built for learning and analysis</p>
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1182 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+    line-height: 1.6;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #172033;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 3px;
+}
+
+header p {
+    color: #687386;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card,
+.chart-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+
+    box-shadow:
+        0 8px 30px rgba(20, 30, 50, 0.06);
+
+    border: 1px solid #e7ebf2;
+}
+
+.input-card {
+    margin-bottom: 35px;
+}
+
+.card h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.description {
+    color: #737d8f;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 12px;
+
+    padding: 15px;
+
+    font-size: 16px;
+    font-family: inherit;
+
+    resize: vertical;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+textarea:focus {
+    border-color: #5268ff;
+    box-shadow: 0 0 0 4px rgba(82, 104, 255, 0.1);
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error-message {
+    color: #c0392b;
+    background: #fff1ef;
+
+    border-radius: 8px;
+
+    padding: 10px 12px;
+
+    margin-top: 12px;
+
+    display: none;
+}
+
+
+/* =========================
+   SAMPLE / POPULATION
+========================= */
+
+.calculation-type {
+    margin-top: 25px;
+}
+
+.calculation-type h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.options {
+    display: flex;
+    gap: 15px;
+}
+
+.option {
+    flex: 1;
+
+    border: 2px solid #e5e9f1;
+    border-radius: 12px;
+
+    padding: 15px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: #5268ff;
+}
+
+.option:has(input:checked) {
+    border-color: #5268ff;
+    background: #f2f4ff;
+}
+
+.option input {
+    accent-color: #5268ff;
+}
+
+.option span {
+    display: flex;
+    flex-direction: column;
+}
+
+.option small {
+    color: #7a8495;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+
+    padding: 13px 22px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.primary-btn {
+    background: #5268ff;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #4055e8;
+    transform: translateY(-1px);
+}
+
+.secondary-btn {
+    background: #edf0f5;
+    color: #344054;
+}
+
+.secondary-btn:hover {
+    background: #e1e5eb;
+}
+
+.copy-btn {
+    background: #edf0f5;
+    color: #344054;
+}
+
+.copy-btn:hover {
+    background: #dfe4eb;
+}
+
+
+/* =========================
+   RESULTS
+========================= */
+
+.results-section {
+    margin-top: 30px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.results-header h2 {
+    font-size: 25px;
+}
+
+.results-header p {
+    color: #7a8495;
+}
+
+
+.results-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stat-card {
+    background: white;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-shadow:
+        0 5px 20px rgba(20, 30, 50, 0.04);
+}
+
+.stat-label {
+    color: #758093;
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+.stat-card strong {
+    font-size: 25px;
+}
+
+.stat-card small {
+    color: #8992a2;
+    margin-top: 3px;
+}
+
+.highlight-card {
+    background: #172033;
+    color: white;
+}
+
+.highlight-card .stat-label {
+    color: #b9c0ce;
+}
+
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.section-title {
+    margin: 25px 0 15px;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   CHART
+========================= */
+
+.chart-card {
+    margin-top: 15px;
+}
+
+.chart-header {
+    margin-bottom: 20px;
+}
+
+.chart-header h3 {
+    font-size: 18px;
+}
+
+.chart-header p {
+    color: #7a8495;
+    font-size: 14px;
+}
+
+canvas {
+    width: 100%;
+    height: 320px;
+    display: block;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #8a93a3;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: 94%;
+        padding: 25px 0;
+    }
+
+    header {
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+
+    .card,
+    .chart-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .options {
+        flex-direction: column;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .results-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        min-height: 100px;
+    }
+
+   canvas {
+    height: 260px;
+}
+
+} /* CLOSE THE MOBILE SECTION */
+
+    /* =========================
+   FREQUENCY TABLE
+========================= */
+
+.table-card {
+    background: white;
+    border: 1px solid #e5e9f0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(20, 30, 50, 0.04);
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    background: #172033;
+    color: white;
+    text-align: left;
+    padding: 13px;
+    font-size: 13px;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e8ecf2;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background: #f7f8fc;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4) {
+    text-align: center;
+}
+/* =========================
+   PERCENTILE
+========================= */
+
+.percentile-card {
+    margin-bottom: 30px;
+}
+
+.percentile-input {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.percentile-input label {
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.percentile-input input {
+    width: 180px;
+    padding: 12px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.percentile-input input:focus {
+    border-color: #5268ff;
+}
+
+.percentile-result {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    background: #f4f6ff;
+
+    border-radius: 10px;
+
+    color: #334155;
+
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+
+    .percentile-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .percentile-input input,
+    .percentile-input button {
+        width: 100%;
+    }
+}
+/* =========================
+   Z-SCORE
+========================= */
+
+.zscore-card {
+    margin-bottom: 30px;
+}
+
+.zscore-card label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.zscore-input {
+    display: flex;
+    gap: 12px;
+}
+
+.zscore-input input {
+    width: 220px;
+
+    padding: 12px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.zscore-input input:focus {
+    border-color: #5268ff;
+}
+
+@media (max-width: 700px) {
+
+    .zscore-input {
+        flex-direction: column;
+    }
+
+    .zscore-input input,
+    .zscore-input button {
+        width: 100%;
+    }
+}
+/* =========================
+   CONFIDENCE INTERVAL
+========================= */
+
+.confidence-card {
+    margin-bottom: 30px;
+}
+
+.confidence-input {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.confidence-input label {
+    width: 100%;
+    font-weight: 600;
+}
+
+.confidence-input select {
+    padding: 12px 15px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    background: white;
+
+    outline: none;
+}
+
+.confidence-input select:focus {
+    border-color: #5268ff;
+}
+
+
+.confidence-results {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.confidence-results div {
+    background: #f7f8fc;
+
+    border-radius: 12px;
+
+    padding: 15px;
+}
+
+.confidence-results span,
+.ci-interval span {
+    display: block;
+
+    color: #758093;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.confidence-results strong,
+.ci-interval strong {
+    font-size: 20px;
+}
+
+
+.ci-interval {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 18px;
+}
+
+.ci-interval div {
+    background: #172033;
+
+    color: white;
+
+    border-radius: 14px;
+
+    padding: 20px;
+}
+
+.ci-interval span {
+    color: #b9c0ce;
+}
+
+.confidence-interpretation {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    background: #f2f4ff;
+
+    border-radius: 10px;
+
+    color: #3f4d68;
+
+    font-weight: 500;
+}
+
+
+@media (max-width: 700px) {
+
+    .confidence-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .confidence-input select,
+    .confidence-input button {
+        width: 100%;
+    }
+
+    .confidence-results {
+        grid-template-columns: 1fr;
+    }
+
+    .ci-interval {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================
+   ONE-SAMPLE T-TEST
+========================= */
+
+.ttest-card {
+    margin-bottom: 30px;
+}
+
+.ttest-input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.ttest-input-grid label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.ttest-input-grid input,
+.ttest-input-grid select {
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    font-size: 15px;
+    background: white;
+
+    outline: none;
+}
+
+.ttest-input-grid input:focus,
+.ttest-input-grid select:focus {
+    border-color: #5268ff;
+}
+
+.ttest-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.ttest-results div {
+    background: #f7f8fc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.ttest-results span {
+    display: block;
+    color: #758093;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.ttest-results strong {
+    font-size: 20px;
+}
+
+@media (max-width: 700px) {
+
+    .ttest-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ttest-results {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================
+   TWO-SAMPLE T-TEST
+========================= */
+
+.two-group-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.group-box {
+    background: #f7f8fc;
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.group-box h3 {
+    margin-bottom: 8px;
+}
+
+.group-box label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.group-box textarea {
+    min-height: 120px;
+    background: white;
+}
+
+.two-test-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 18px 0;
+}
+
+.two-test-options label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.two-test-options select {
+    width: 100%;
+    padding: 12px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    background: white;
+    font-size: 15px;
+}
+
+@media (max-width: 700px) {
+
+    .two-group-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .two-test-options {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================
+   CHI-SQUARE TEST
+========================= */
+
+.chi-square-card {
+    margin-bottom: 30px;
+}
+
+.chi-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.chi-input-grid label,
+.chi-options label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.chi-input-grid textarea {
+    min-height: 130px;
+}
+
+.chi-options {
+    margin-top: 18px;
+    width: 50%;
+}
+
+.chi-options select {
+    width: 100%;
+    padding: 12px;
+
+    border: 2px solid #e1e6ef;
+    border-radius: 10px;
+
+    background: white;
+    font-size: 15px;
+}
+
+.chi-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.chi-results div {
+    background: #f7f8fc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.chi-results span {
+    display: block;
+    color: #758093;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.chi-results strong {
+    font-size: 20px;
+}
+
+@media (max-width: 700px) {
+
+    .chi-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chi-options {
+        width: 100%;
+    }
+
+    .chi-results {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================
+   CORRELATION
+========================= */
+
+.correlation-card {
+    margin-bottom: 30px;
+}
+
+.correlation-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.correlation-inputs label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.correlation-inputs textarea {
+    min-height: 130px;
+}
+
+.correlation-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.correlation-results div {
+    background: #f7f8fc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.correlation-results span {
+    display: block;
+    color: #758093;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.correlation-results strong {
+    font-size: 22px;
+}
+
+@media (max-width: 700px) {
+
+    .correlation-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .correlation-results {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================
+   LINEAR REGRESSION
+========================= */
+
+.regression-card {
+    margin-bottom: 30px;
+}
+
+.regression-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.regression-inputs label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.regression-inputs textarea {
+    min-height: 130px;
+}
+
+.regression-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.regression-results div {
+    background: #f7f8fc;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.regression-results span {
+    display: block;
+    color: #758093;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.regression-results strong {
+    font-size: 20px;
+}
+
+.regression-equation {
+    margin-top: 18px;
+    background: #172033;
+    color: white;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.regression-equation span {
+    display: block;
+    color: #b9c0ce;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.regression-equation strong {
+    font-size: 24px;
+}
+
+@media (max-width: 700px) {
+
+    .regression-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .regression-results {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================
+   REGRESSION CHART
+========================= */
+
+.regression-chart-card {
+    margin-top: 20px;
+
+    background: white;
+
+    border: 1px solid #e5e9f0;
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+.regression-chart-card h3 {
+    margin-bottom: 4px;
+}
+
+.regression-chart-card p {
+    color: #758093;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
+}
+
+#regressionChart {
+    width: 100%;
+    height: 350px;
+    display: block;
+}
+/* =========================
+ABOUT CALCULATOR
+========================= */
+
+.about-calculator {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 28px;
+    background: white;
+    border: 1px solid #e7ebf2;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(20, 30, 50, 0.06);
+}
+
+.about-calculator h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #172033;
+}
+
+.about-calculator p {
+    color: #687386;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.about-calculator p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .about-calculator {
+        margin: 25px 0;
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .about-calculator h2 {
+        font-size: 20px;
+    }
+}
